@@ -1,0 +1,3 @@
+/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment1/build/CMakeFiles/RTR_Assignment1.dir
+/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment1/build/CMakeFiles/edit_cache.dir
+/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment1/build/CMakeFiles/rebuild_cache.dir
