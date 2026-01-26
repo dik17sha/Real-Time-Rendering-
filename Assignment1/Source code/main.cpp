@@ -77,10 +77,7 @@ int main()
     std::cout <<"OpenGl version: " << glGetString(GL_VERSION) << std::endl;
     
     // 3. Global OpenGL state
-    
-    glEnable(GL_DEPTH_TEST); 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    glEnable(GL_DEPTH_TEST);
     
     // 4. Setup for the Cube Geometry using the classes
     
@@ -96,8 +93,9 @@ int main()
     // 5. Main Render Loop
     while(!glfwWindowShouldClose(window))
     {
-        //input 
-        //processInput(window);
+        float currentFrame = static_cast<float>(glfwGetTime());
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
 
         //render heree
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -107,7 +105,15 @@ int main()
         //Other shaders to load othe models 
         defaultShader.use();
 
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 1000.0f);
+        defaultShader.setVec3("lightPos" , glm::vec3(20.0f, 40.0f, 50.0f));
+        defaultShader.setVec3("viewPos", camera.Position);
+        defaultShader.setVec3("objectColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height);
+
+
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)width / (float)height, 0.1f, 1000.0f);
         glm::mat4 view = camera.getViewMatrix();
 
         defaultShader.setMat4("projection", projection);
@@ -120,6 +126,7 @@ int main()
         model1Matrix = glm::scale(model1Matrix, glm::vec3(5.0f));
 
         defaultShader.setMat4("model", model1Matrix);
+        defaultShader.setInt("modelType", 0);
         myModel.Draw(defaultShader);
 
 
@@ -129,6 +136,7 @@ int main()
         model2Matrix = glm::rotate(model2Matrix, (float)glfwGetTime() * 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
         model2Matrix = glm::scale(model2Matrix, glm::vec3(5.0f));
         defaultShader.setMat4("model", model2Matrix);
+        defaultShader.setInt("modelType", 1);
         myModel.Draw(defaultShader);
 
 
@@ -138,6 +146,7 @@ int main()
         model3Matrix = glm::rotate(model3Matrix, (float)glfwGetTime() * 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
         model3Matrix = glm::scale(model3Matrix, glm::vec3(5.0f));
         defaultShader.setMat4("model", model3Matrix);
+        defaultShader.setInt("modelType", 2);
         myModel.Draw(defaultShader);
 
         // 5.4 Swapping the buffers
