@@ -105,11 +105,11 @@ int main()
     skyboxShader.setInt("skybox", 0);
 
     objectShader.use();
-    objectShader.setInt("environmentMap", 0);
+    objectShader.setInt("skybox", 0);
     objectShader.setFloat("EtaR", 1.0f / 1.10f);
     objectShader.setFloat("EtaG", 1.0f / 1.50f);
     objectShader.setFloat("EtaB", 1.0f / 2.00f);
-    objectShader.setFloat("F0", 0.04f);
+    objectShader.setFloat("F0", 0.1f);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -141,15 +141,17 @@ int main()
 
 
         //Take this out when you uncomment the skybox
-
+        
+        //Sphere
         objectShader.setMat4("projection", projection);
         objectShader.setMat4("view", view);
         objectShader.setVec3("cameraPos", camera.Position);
 
         glm::mat4 modelMatrix1 = glm::mat4(1.0f);
-        modelMatrix1 = glm::translate(modelMatrix1, glm::vec3(1.5f, 1.0f, 0.0f));
-        modelMatrix1 = glm::scale(modelMatrix1, glm::vec3(0.1f)); // Scale down the teapot
-        modelMatrix1 = glm::rotate(modelMatrix1, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        glm::mat4 modelTranslate = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 1.0f, 0.0f));
+        glm::mat4 modelScale = glm::scale( glm::mat4(1.0f), glm::vec3(0.1f)); 
+        //modelMatrix1 = glm::rotate(modelMatrix1, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        modelMatrix1 = modelTranslate * modelScale;
         objectShader.setMat4("model", modelMatrix1);
         objectShader.setInt("effectType", 0);
         
@@ -157,14 +159,15 @@ int main()
         glm::mat3 normalMatrix1 = glm::transpose(glm::inverse(glm::mat3(modelMatrix1)));
         objectShader.setMat3("normalMatrix", normalMatrix1);
 
-        myModel1.Draw(objectShader);
+        myModel3.Draw(objectShader);
 
 
-        // 2. REFRACTION ONLY (CENTER)
+        // 2. REFRACTION ONLY 
+        //Ring Donut thing 
         glm::mat4 modelMatrix2 = glm::mat4(1.0f);
         modelMatrix2 = glm::translate(modelMatrix2, glm::vec3(0.0f, 1.0f, 0.0f));
-        modelMatrix2 = glm::scale(modelMatrix2, glm::vec3(0.25f)); // Scale down the teapot
-        modelMatrix2 = glm::rotate(modelMatrix2, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        modelMatrix2 = glm::scale(modelMatrix2, glm::vec3(0.25f)); 
+        //modelMatrix2 = glm::rotate(modelMatrix2, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
         objectShader.setMat4("model", modelMatrix2);
         objectShader.setInt("effectType", 1);
         myModel2.Draw(objectShader);
@@ -172,16 +175,32 @@ int main()
         glm::mat3 normalMatrix2 = glm::transpose(glm::inverse(glm::mat3(model)));
         objectShader.setMat3("normalMatrix", normalMatrix2);
 
-        // 3. FRESNEL MIX (RIGHT)
+        // 2. REFRACTION DIFFUSION
+        //Ring Donut thing 
         glm::mat4 modelMatrix3 = glm::mat4(1.0f);
         modelMatrix3 = glm::translate(modelMatrix3, glm::vec3(-1.0f, 1.0f, 0.0f));
-        modelMatrix3 = glm::scale(modelMatrix3, glm::vec3(0.1f)); // Scale down the teapot
-        modelMatrix3 = glm::rotate(modelMatrix3, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        modelMatrix3 = glm::scale(modelMatrix3, glm::vec3(0.25f)); // Scale down the teapot
+        //modelMatrix3 = glm::rotate(modelMatrix3, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
         objectShader.setMat4("model", modelMatrix3);
         objectShader.setInt("effectType", 2);
-        myModel3.Draw(objectShader);
+        myModel2.Draw(objectShader);
+
         glm::mat3 normalMatrix3 = glm::transpose(glm::inverse(glm::mat3(model)));
         objectShader.setMat3("normalMatrix", normalMatrix3);
+
+
+        // 3. FRESNEL 
+        //Sphere
+        glm::mat4 modelMatrix4 = glm::mat4(1.0f);
+        modelMatrix4 = glm::translate(modelMatrix4, glm::vec3(-3.0f, 1.0f, 0.0f));
+        modelMatrix4 = glm::scale(modelMatrix4, glm::vec3(0.1f)); // Scale down the teapot
+        //modelMatrix4 = glm::rotate(modelMatrix4, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        objectShader.setMat4("model", modelMatrix4);
+        objectShader.setInt("effectType", 3);
+        myModel3.Draw(objectShader);
+
+        glm::mat3 normalMatrix4 = glm::transpose(glm::inverse(glm::mat3(model)));
+        objectShader.setMat3("normalMatrix", normalMatrix4);
 
 
         // --- SKYBOX ---

@@ -10,6 +10,7 @@ uniform mat3 normalMatrix;
 
 out vec3 worldPos;
 out vec3 normal;
+out vec3 crntPos;
 
 void main()
 {
@@ -17,7 +18,7 @@ void main()
 
     worldPos = worldPos4.xyz;
 
-    normal = normalMatrix * aNormal;
+    normal = normalize(normalMatrix * aNormal);
 
     gl_Position = (projection * view) * worldPos4;
 }
