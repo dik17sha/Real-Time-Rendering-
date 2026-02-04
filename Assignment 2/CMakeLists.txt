@@ -8,6 +8,7 @@ set(CMAKE_C_STANDARD 99)
 # ============ Collect Sources ============
 set(SOURCES
     src/main.cpp
+    src/stb.cpp
     libs/src/glad.c
 )
 
@@ -24,6 +25,19 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 # ============ Find OpenGL ============
 find_package(OpenGL REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
+
+# ============ Link Assimp ============
+set(ASSIMP_LIB_PATH "${CMAKE_SOURCE_DIR}/libs/lib")
+if(EXISTS "${ASSIMP_LIB_PATH}/libassimp.a")
+    message(STATUS "Using libassimp.a from ${ASSIMP_LIB_PATH}")
+    target_link_libraries(${PROJECT_NAME} PRIVATE "${ASSIMP_LIB_PATH}/libassimp.a")
+else()
+    message(FATAL_ERROR "Assimp library not found in ${ASSIMP_LIB_PATH}")
+endif()
+
+# ============ Link zlib (required by Assimp) ============
+find_package(ZLIB REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE ZLIB::ZLIB)
 
 # ============ Link GLFW ============
 set(GLFW_LIB_PATH "${CMAKE_SOURCE_DIR}/libs/lib")

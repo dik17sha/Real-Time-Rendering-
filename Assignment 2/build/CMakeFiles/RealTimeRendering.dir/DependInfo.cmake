@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/src/glad.c" "CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o.d"
   "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/main.cpp" "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/stb.cpp" "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

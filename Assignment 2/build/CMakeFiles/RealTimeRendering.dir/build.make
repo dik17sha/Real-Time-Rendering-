@@ -86,10 +86,24 @@ CMakeFiles/RealTimeRendering.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/src/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/main.cpp" -o CMakeFiles/RealTimeRendering.dir/src/main.cpp.s
 
+CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/src/stb.cpp
+CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o -MF CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/stb.cpp"
+
+CMakeFiles/RealTimeRendering.dir/src/stb.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/src/stb.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/stb.cpp" > CMakeFiles/RealTimeRendering.dir/src/stb.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/src/stb.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/src/stb.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/stb.cpp" -o CMakeFiles/RealTimeRendering.dir/src/stb.cpp.s
+
 CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o: CMakeFiles/RealTimeRendering.dir/flags.make
 CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/src/glad.c
 CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o -MF CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o.d -o CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/src/glad.c"
 
 CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.i: cmake_force
@@ -103,18 +117,22 @@ CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.s: cmake_force
 # Object files for target RealTimeRendering
 RealTimeRendering_OBJECTS = \
 "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o" \
 "CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o"
 
 # External object files for target RealTimeRendering
 RealTimeRendering_EXTERNAL_OBJECTS =
 
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/src/main.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/build.make
 RealTimeRendering: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks/OpenGL.framework
+RealTimeRendering: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/lib/libassimp.a
+RealTimeRendering: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/lib/libz.tbd
 RealTimeRendering: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/lib/libglfw3.a
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable RealTimeRendering"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable RealTimeRendering"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RealTimeRendering.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying shaders and assets to project root"
 	/Applications/CMake.app/Contents/bin/cmake -E copy_directory /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/src/shaders /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/shaders

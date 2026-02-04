@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o.d"
   "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o"
   "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o.d"
+  "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o"
+  "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o.d"
   "RealTimeRendering"
   "RealTimeRendering.pdb"
 )
