@@ -20,5 +20,5 @@ void main()
 
     normal = normalize(normalMatrix * aNormal);
 
-    gl_Position = (projection * view) * worldPos4;
+    gl_Position = projection * view * worldPos4;
 }

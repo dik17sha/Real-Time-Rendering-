@@ -114,11 +114,116 @@ CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/src/glad.c" -o CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.s
 
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.s
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_draw.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_draw.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_draw.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_draw.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.s
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_widgets.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_widgets.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_widgets.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_widgets.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.s
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_tables.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_tables.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_tables.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_tables.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.s
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_demo.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_demo.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_demo.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_demo.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.s
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_impl_glfw.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_glfw.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_glfw.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_glfw.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.s
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o: CMakeFiles/RealTimeRendering.dir/flags.make
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_impl_opengl3.cpp
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o: CMakeFiles/RealTimeRendering.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o -MF CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o -c "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_opengl3.cpp"
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_opengl3.cpp" > CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.i
+
+CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_opengl3.cpp" -o CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.s
+
 # Object files for target RealTimeRendering
 RealTimeRendering_OBJECTS = \
 "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o" \
 "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o" \
-"CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o"
+"CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o" \
+"CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o"
 
 # External object files for target RealTimeRendering
 RealTimeRendering_EXTERNAL_OBJECTS =
@@ -126,13 +231,20 @@ RealTimeRendering_EXTERNAL_OBJECTS =
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/src/main.cpp.o
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o
+RealTimeRendering: CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/build.make
 RealTimeRendering: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks/OpenGL.framework
 RealTimeRendering: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/lib/libassimp.a
 RealTimeRendering: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/lib/libz.tbd
 RealTimeRendering: /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/lib/libglfw3.a
 RealTimeRendering: CMakeFiles/RealTimeRendering.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable RealTimeRendering"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable RealTimeRendering"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RealTimeRendering.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying shaders and assets to project root"
 	/Applications/CMake.app/Contents/bin/cmake -E copy_directory /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/src/shaders /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/shaders

@@ -8,10 +8,9 @@ out vec4 FragColor;
 uniform samplerCube skybox;
 uniform vec3 cameraPos;
 
-uniform float EtaR;
-uniform float EtaG;
-uniform float EtaB;
-uniform float F0;
+uniform float ior;
+uniform float dispersion;
+uniform float reflectivity;
 uniform int effectType; // 0: Reflection, 1: Refraction, 2: Chromatic, 3: Fresnel
 
 float fresnelSchlick(vec3 I, vec3 N, float F0)
@@ -25,7 +24,7 @@ void main()
     vec3 I = normalize(worldPos - cameraPos); 
 
     // Calculate fresnel term (used for multiple effects)
-    float F = fresnelSchlick(I, N, F0);
+    float eta = 1.0 / ior;
 
     vec3 finalColor;
 
@@ -37,16 +36,20 @@ void main()
     }
     else if (effectType == 1) 
     {
-        // Pure Refraction (single wavelength)
-        vec3 T = refract(I, N, EtaG); // Use green channel eta as base
+        // Pure Refraction 
+        vec3 T = refract(I, N, eta); // Use green channel eta as base
         finalColor = texture(skybox, T).rgb;
     }
     else if (effectType == 2) 
     {
-        // Chromatic Dispersion (separate wavelengths)
-        vec3 T_R = refract(I, N, EtaR);
-        vec3 T_G = refract(I, N, EtaG);
-        vec3 T_B = refract(I, N, EtaB);
+        float ratioR = 1.0 / (ior - dispersion);
+        float ratioG = 1.0 / ior;
+        float ratioB = 1.0 / (ior +dispersion);
+
+        // Chromatic Dispersion 
+        vec3 T_R = refract(I, N, ratioR);
+        vec3 T_G = refract(I, N, ratioG);
+        vec3 T_B = refract(I, N, ratioB);
 
         vec3 refrColor;
         refrColor.r = texture(skybox, T_R).r;
@@ -55,17 +58,16 @@ void main()
 
         finalColor = refrColor;
     }
-    else // effectType == 3 or default
+    else // effectType == 3 
     {
         // Fresnel Blend (reflection + refraction with chromatic dispersion)
         vec3 R = reflect(I, N);
-        vec3 reflColor = texture(skybox, R).rgb;
-
-        float eta = 1.0/1.52;
         vec3 T = refract(I, N, eta); 
+
+        vec3 reflColor = texture(skybox, R).rgb;
         vec3 refrColor = texture(skybox, T).rgb;
 
-        float F = fresnelSchlick(I, N, F0);
+        float F = fresnelSchlick(I, N, reflectivity);
         
         finalColor = mix(refrColor, reflColor, F);
         

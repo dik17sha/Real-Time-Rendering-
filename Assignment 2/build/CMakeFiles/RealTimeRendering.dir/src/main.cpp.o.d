@@ -1088,6 +1088,11 @@ CMakeFiles/RealTimeRendering.dir/src/main.cpp.o: \
   /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/include/glm/gtc/../mat4x2.hpp \
   /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/include/glm/gtc/../mat4x3.hpp \
   /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/include/glm/gtc/type_ptr.inl \
+  /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui.h \
+  /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imconfig.h \
+  /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_impl_glfw.h \
+  /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/libs/imgui/imgui_impl_opengl3.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include/TargetConditionals.h \
   /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/src/headers/camera.h \
   /Users/dchottani/Desktop/Real-Time-Rendering-/Assignment\ 2/src/headers/shader.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include/c++/v1/fstream \

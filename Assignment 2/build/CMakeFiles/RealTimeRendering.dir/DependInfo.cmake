@@ -9,6 +9,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/src/glad.c" "CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/src/glad.c.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_demo.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_demo.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_draw.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_draw.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_glfw.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_glfw.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_impl_opengl3.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_impl_opengl3.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_tables.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_tables.cpp.o.d"
+  "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui/imgui_widgets.cpp" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/libs/imgui/imgui_widgets.cpp.o.d"
   "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/main.cpp" "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/src/main.cpp.o.d"
   "/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/stb.cpp" "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o" "gcc" "CMakeFiles/RealTimeRendering.dir/src/stb.cpp.o.d"
   )

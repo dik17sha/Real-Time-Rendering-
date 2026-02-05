@@ -5,11 +5,25 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 99)
 
+# ============ ImGui Sources ============
+# Point this to where you placed the ImGui files
+set(IMGUI_DIR "${CMAKE_SOURCE_DIR}/libs/imgui")
+set(IMGUI_SOURCES
+    ${IMGUI_DIR}/imgui.cpp
+    ${IMGUI_DIR}/imgui_draw.cpp
+    ${IMGUI_DIR}/imgui_widgets.cpp
+    ${IMGUI_DIR}/imgui_tables.cpp
+    ${IMGUI_DIR}/imgui_demo.cpp
+    ${IMGUI_DIR}/imgui_impl_glfw.cpp
+    ${IMGUI_DIR}/imgui_impl_opengl3.cpp
+)
+
 # ============ Collect Sources ============
 set(SOURCES
     src/main.cpp
     src/stb.cpp
     libs/src/glad.c
+    ${IMGUI_SOURCES}
 )
 
 # ============ Create Executable ============
@@ -20,6 +34,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     "${CMAKE_SOURCE_DIR}/src/headers"
     "${CMAKE_SOURCE_DIR}/libs/include"
     "${CMAKE_SOURCE_DIR}/src"
+    "${IMGUI_DIR}"
 )
 
 # ============ Find OpenGL ============

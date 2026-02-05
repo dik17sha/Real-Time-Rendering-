@@ -7,9 +7,13 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 #include "headers/camera.h"
 #include "headers/shader.h"
-#include "headers/model.h" // Ensure you use model.h for loading OBJ files
+#include "headers/model.h" 
 
 #include <iostream>
 #include <vector>
@@ -37,12 +41,23 @@ void processInput(GLFWwindow *window);
 unsigned int loadCubemap(const std::vector<std::string>& faces);
 unsigned int loadTexture(char const * path);
 
+// GUI State variables
+int renderMode = 0; 
+float uiIOR = 1.52f; // Using Glass Index of Refraction 
+float uiChromaticDispersion = 0.01f;
+float uiReflectivity = 0.5f;
+bool rotateModels = true;
+
+
+bool isGuiMode = false; 
 int main()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint( GLFW_RESIZABLE, GL_TRUE );
+    
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
@@ -54,9 +69,23 @@ int main()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) return -1;
+
+    float xscale, yscale;
+    glfwGetWindowContentScale(window, &xscale, &yscale);
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGui::StyleColorsDark();
+
+    io.DisplayFramebufferScale = ImVec2(xscale, yscale);
+
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 330");
+
 
     glEnable(GL_DEPTH_TEST);
 
@@ -72,17 +101,17 @@ int main()
     // Skybox Geometry
     float skyboxVertices[] = {
         -1.0f,  1.0f, -1.0f, -1.0f, -1.0f, -1.0f,  1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,  1.0f,  1.0f, -1.0f, -1.0f,  1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,  1.0f,  1.0f, -1.0f, -1.0f,  1.0f, -1.0f,
         -1.0f, -1.0f,  1.0f, -1.0f, -1.0f, -1.0f, -1.0f,  1.0f, -1.0f,
         -1.0f,  1.0f, -1.0f, -1.0f,  1.0f,  1.0f, -1.0f, -1.0f,  1.0f,
-         1.0f, -1.0f, -1.0f,  1.0f, -1.0f,  1.0f,  1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,  1.0f,  1.0f, -1.0f,  1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,  1.0f, -1.0f,  1.0f,  1.0f,  1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,  1.0f,  1.0f, -1.0f,  1.0f, -1.0f, -1.0f,
         -1.0f, -1.0f,  1.0f, -1.0f,  1.0f,  1.0f,  1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,  1.0f, -1.0f,  1.0f, -1.0f, -1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,  1.0f, -1.0f,  1.0f, -1.0f, -1.0f,  1.0f,
         -1.0f,  1.0f, -1.0f,  1.0f,  1.0f, -1.0f,  1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f, -1.0f,  1.0f,  1.0f, -1.0f,  1.0f, -1.0f,
+        1.0f,  1.0f,  1.0f, -1.0f,  1.0f,  1.0f, -1.0f,  1.0f, -1.0f,
         -1.0f, -1.0f, -1.0f, -1.0f, -1.0f,  1.0f,  1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f, -1.0f, -1.0f,  1.0f,  1.0f, -1.0f,  1.0f
+        1.0f, -1.0f, -1.0f, -1.0f, -1.0f,  1.0f,  1.0f, -1.0f,  1.0f
     };
 
     unsigned int skyboxVAO, skyboxVBO;
@@ -104,22 +133,46 @@ int main()
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
 
-    objectShader.use();
-    objectShader.setInt("skybox", 0);
-    objectShader.setFloat("EtaR", 1.0f / 1.10f);
-    objectShader.setFloat("EtaG", 1.0f / 1.50f);
-    objectShader.setFloat("EtaB", 1.0f / 2.00f);
-    objectShader.setFloat("F0", 0.1f);
 
+    objectShader.setInt("skybox", 0);
+    
     while (!glfwWindowShouldClose(window))
     {
-        
+        glfwPollEvents();
+
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
         float currentFrame = (float)glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
         processInput(window);
+
+        ImGui::SetNextWindowSize(ImVec2(600 * xscale, 800 * yscale), ImGuiCond_FirstUseEver);       
+        ImGui::Begin("Glass Material Properties");
+        ImGui::Text("Refelction & Refraction Demo");
+        ImGui::Separator();
+
+        ImGui::Text("Render Mode:");
+        ImGui::RadioButton("Pure Reflection", &renderMode, 0);
+        ImGui::RadioButton("Pure Refraction", &renderMode, 1);
+        ImGui::RadioButton("Chromatic Dispersion", &renderMode, 2);
+        ImGui::RadioButton("Fresnel Effect", &renderMode, 3);
+
+        ImGui::Separator();
+        ImGui::SliderFloat("Index of Refraction", &uiIOR, 1.0f, 2.5f);
+        ImGui::SliderFloat("Chromatic Dispersion Slider", &uiChromaticDispersion, 0.0f, 1.0f);
+        ImGui::SliderFloat("Reflectivity", &uiReflectivity, 0.0f, 1.0f);
+        ImGui::Separator();
+
+
+        ImGui::Checkbox("Rotate Models", &rotateModels);
+        ImGui::Separator();
+
+        
+        ImGui::End();
 
         glEnable(GL_DEPTH_TEST);
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
@@ -133,11 +186,15 @@ int main()
 
         
 
-        // --- DRAW 3 MODELS ---
+        // --- MODELS ---
 
 
-        // 1. REFLECTION ONLY (LEFT)
+        // 1. REFLECTION ONLY (
         objectShader.use();
+        objectShader.setFloat("ior", uiIOR);
+        objectShader.setFloat("dispersion", uiChromaticDispersion);
+        objectShader.setFloat("reflectivity", uiReflectivity);
+        objectShader.setInt("effectType", renderMode);
 
 
         //Take this out when you uncomment the skybox
@@ -148,15 +205,19 @@ int main()
         objectShader.setVec3("cameraPos", camera.Position);
 
         glm::mat4 modelMatrix1 = glm::mat4(1.0f);
-        glm::mat4 modelTranslate = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 1.0f, 0.0f));
-        glm::mat4 modelScale = glm::scale( glm::mat4(1.0f), glm::vec3(0.1f)); 
-        //modelMatrix1 = glm::rotate(modelMatrix1, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
-        modelMatrix1 = modelTranslate * modelScale;
-        objectShader.setMat4("model", modelMatrix1);
-        objectShader.setInt("effectType", 0);
+        modelMatrix1 = glm::translate(modelMatrix1, glm::vec3(1.5f, 1.0f, 0.0f));
+
+        if (rotateModels) {
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+            modelMatrix1 = rotationMatrix * modelMatrix1;  
+        }
+
+        modelMatrix1 = glm::scale(modelMatrix1, glm::vec3(0.1f));
         
 
         glm::mat3 normalMatrix1 = glm::transpose(glm::inverse(glm::mat3(modelMatrix1)));
+        objectShader.setMat4("model", modelMatrix1);
+        objectShader.setInt("effectType", 0);
         objectShader.setMat3("normalMatrix", normalMatrix1);
 
         myModel3.Draw(objectShader);
@@ -165,43 +226,62 @@ int main()
         // 2. REFRACTION ONLY 
         //Ring Donut thing 
         glm::mat4 modelMatrix2 = glm::mat4(1.0f);
-        modelMatrix2 = glm::translate(modelMatrix2, glm::vec3(0.0f, 1.0f, 0.0f));
+        modelMatrix2 = glm::translate(modelMatrix2, glm::vec3(0.5f, 1.0f, 0.0f));
+
         modelMatrix2 = glm::scale(modelMatrix2, glm::vec3(0.25f)); 
-        //modelMatrix2 = glm::rotate(modelMatrix2, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+
+
+        if (rotateModels) {
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+            modelMatrix2 = rotationMatrix * modelMatrix2;  
+        }
+
+    
+        glm::mat3 normalMatrix2 = glm::transpose(glm::inverse(glm::mat3(modelMatrix2)));
+        objectShader.setMat3("normalMatrix", normalMatrix2);
         objectShader.setMat4("model", modelMatrix2);
         objectShader.setInt("effectType", 1);
         myModel2.Draw(objectShader);
 
-        glm::mat3 normalMatrix2 = glm::transpose(glm::inverse(glm::mat3(model)));
-        objectShader.setMat3("normalMatrix", normalMatrix2);
-
-        // 2. REFRACTION DIFFUSION
+        // 3. CHROMATIC DIFFUSION
         //Ring Donut thing 
         glm::mat4 modelMatrix3 = glm::mat4(1.0f);
-        modelMatrix3 = glm::translate(modelMatrix3, glm::vec3(-1.0f, 1.0f, 0.0f));
-        modelMatrix3 = glm::scale(modelMatrix3, glm::vec3(0.25f)); // Scale down the teapot
-        //modelMatrix3 = glm::rotate(modelMatrix3, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        modelMatrix3 = glm::translate(modelMatrix3, glm::vec3(-1.5f, 1.0f, 0.0f));
+        
+        if (rotateModels) {
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+            modelMatrix3 = rotationMatrix * modelMatrix3;  
+        }
+
+        modelMatrix3 = glm::scale(modelMatrix3, glm::vec3(0.25f)); 
+        
+
+        glm::mat3 normalMatrix3 = glm::transpose(glm::inverse(glm::mat3(modelMatrix3)));
+        objectShader.setMat3("normalMatrix", normalMatrix3);
         objectShader.setMat4("model", modelMatrix3);
         objectShader.setInt("effectType", 2);
+
         myModel2.Draw(objectShader);
 
-        glm::mat3 normalMatrix3 = glm::transpose(glm::inverse(glm::mat3(model)));
-        objectShader.setMat3("normalMatrix", normalMatrix3);
-
-
         // 3. FRESNEL 
-        //Sphere
+        //Sphere again 
         glm::mat4 modelMatrix4 = glm::mat4(1.0f);
         modelMatrix4 = glm::translate(modelMatrix4, glm::vec3(-3.0f, 1.0f, 0.0f));
-        modelMatrix4 = glm::scale(modelMatrix4, glm::vec3(0.1f)); // Scale down the teapot
-        //modelMatrix4 = glm::rotate(modelMatrix4, (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+        
+        if(rotateModels) {
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 0.4f, glm::vec3(0, 1, 0));
+            modelMatrix4 = rotationMatrix * modelMatrix4;  
+        } 
+
+        modelMatrix4 = glm::scale(modelMatrix4, glm::vec3(0.1f)); 
+        
+
+        glm::mat3 normalMatrix4 = glm::transpose(glm::inverse(glm::mat3(modelMatrix4)));
+        objectShader.setMat3("normalMatrix", normalMatrix4);
         objectShader.setMat4("model", modelMatrix4);
         objectShader.setInt("effectType", 3);
+
         myModel3.Draw(objectShader);
-
-        glm::mat3 normalMatrix4 = glm::transpose(glm::inverse(glm::mat3(model)));
-        objectShader.setMat3("normalMatrix", normalMatrix4);
-
 
         // --- SKYBOX ---
         skyboxShader.use();
@@ -212,7 +292,7 @@ int main()
         skyboxShader.setMat4("model", skyboxModel);
         skyboxShader.setMat4("view", glm::mat4(glm::mat3(view)));
         skyboxShader.setMat4("projection", projection);
-         // Scale the skybox
+   
     
         glBindVertexArray(skyboxVAO);
         glUniform1i(glGetUniformLocation(skyboxShader.ID, "skybox"), 0);
@@ -224,9 +304,17 @@ int main()
         glDepthFunc(GL_LESS); // set depth function b
 
 
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
     glfwTerminate();
     return 0;
 }
@@ -237,11 +325,6 @@ void processInput(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
-    // --- Movement Speed Modifier ---
-    float currentSpeed = camera.MovementSpeed; 
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        camera.MovementSpeed *= 2.5f; // "Sprint" mode
-
     // --- Standard WASD ---
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, deltaTime);
@@ -251,34 +334,43 @@ void processInput(GLFWwindow *window)
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+        camera.ProcessKeyboard(UP, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+        camera.ProcessKeyboard(DOWN, deltaTime);
 
-    // --- Vertical Movement (Ascent/Descent) ---
-    // If your Camera class doesn't have UP/DOWN enums, 
-    // we can manipulate the position vector directly:
+
+    //This works 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
         camera.Position += camera.Up * camera.MovementSpeed * deltaTime;
-    if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+    
+    
+    if (glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
         camera.Position -= camera.Up * camera.MovementSpeed * deltaTime;
 
-    // Reset speed for next frame
-    camera.MovementSpeed = currentSpeed;
 }
 
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
-// ---------------------------------------------------------------------------------------------
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // make sure the viewport matches the new window dimensions; note that width and 
-    // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
 
-// glfw: whenever the mouse moves, this callback is called
-// -------------------------------------------------------
 void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 {
+    ImGuiIO& io = ImGui::GetIO();
+    if (io.WantCaptureMouse)  
+        return;
+
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) != GLFW_PRESS)
+    {
+        firstMouse = true;  
+        return;
+    }
+
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
+
     if (firstMouse)
     {
         lastX = xpos;
@@ -287,7 +379,7 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     }
 
     float xoffset = xpos - lastX;
-    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+    float yoffset = lastY - ypos;
 
     lastX = xpos;
     lastY = ypos;
@@ -295,15 +387,11 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
-// glfw: whenever the mouse scroll wheel scrolls, this callback is called
-// ----------------------------------------------------------------------
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
     camera.ProcessMouseScroll(static_cast<float>(yoffset));
 }
 
-// utility function for loading a 2D texture from file
-// ---------------------------------------------------
 unsigned int loadTexture(char const * path)
 {
     unsigned int textureID;
@@ -341,15 +429,6 @@ unsigned int loadTexture(char const * path)
     return textureID;
 }
 
-// loads a cubemap texture from 6 individual texture faces
-// order:
-// +X (right)
-// -X (left)
-// +Y (top)
-// -Y (bottom)
-// +Z (front) 
-// -Z (back)
-// -------------------------------------------------------
 unsigned int loadCubemap(const std::vector<std::string>& faces)
 {
     unsigned int textureID;

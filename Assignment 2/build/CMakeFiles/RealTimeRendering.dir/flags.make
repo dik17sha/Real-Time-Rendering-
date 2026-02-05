@@ -5,7 +5,7 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/headers" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/include" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src" -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks
+C_INCLUDES = -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/headers" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/include" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui" -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks
 
 C_FLAGSarm64 = -std=gnu99 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk
 
@@ -13,7 +13,7 @@ C_FLAGS = -std=gnu99 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Deve
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/headers" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/include" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src" -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks
+CXX_INCLUDES = -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src/headers" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/include" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/src" -I"/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment 2/libs/imgui" -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk
 
