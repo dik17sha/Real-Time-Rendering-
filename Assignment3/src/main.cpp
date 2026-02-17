@@ -28,9 +28,14 @@ float lastY = SCR_HEIGHT / 2.0;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+glm::vec3 ambientColor = glm::vec3(0.1f, 0.1f, 0.1f);
+glm::vec3 diffuseColor = glm::vec3(0.8f, 0.8f, 0.8f);
+glm::vec3 specularColor = glm::vec3(1.0f, 1.0f, 1.0f);
+float shininess = 32.0f; 
+float bumpiness = 0;
+
 void processInput(GLFWwindow *window);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-
 
 
 int main()
@@ -71,7 +76,11 @@ int main()
 
     //2 Loading shader and models 
     Shader myShader("shaders/normal.vert", "shaders/normal.frag");
-    Model myModel("/Users/dchottani/Desktop/Real-Time-Rendering-/Assignment3/assets /Rodin_Thinker.obj");
+    Model myModel("assets /thinker/Rodin_Thinker.obj");
+    Model otherModel("assets /box/normal_map_test.obj");
+    Model anotherModel("assets /Abox/cube_-_normal_map_test.obj");
+    Model manModel("assets /manhole /normal_map_test_-_manhole.obj");
+
 
     static bool samplersSet = false;
     if(!samplersSet)
@@ -100,10 +109,13 @@ int main()
 
         ImGui::Begin("Mapping Control", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
         ImGui::Separator();
-        ImGui::Checkbox("Disable Normal Mapping", &useNormalMap);
+        ImGui::Checkbox("Normal Mapping", &useNormalMap);
+        ImGui::Separator();
+
+        //Lighting Controls
+        ImGui::SliderFloat("Bump Strength", &bumpiness, 0.0f, 2.0f);
         ImGui::Separator();
         ImGui::SliderFloat("Rotation Speed", &rotationSpeed, 0.0f, 200.0f);
-        ImGui::Separator();
         ImGui::Text("Current speed: %.1f deg/s", rotationSpeed);
         ImGui::Separator();
         ImGui::End();
@@ -111,12 +123,11 @@ int main()
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-
         myShader.use();
         myShader.setInt("texture_diffuse1", 0);
         myShader.setInt("texture_normal1", 1);
         myShader.setBool("useNormalMap", useNormalMap);
+        myShader.setFloat("bumpiness", bumpiness);
 
         // 4 - lights 
         //glm::vec3 lightPos(sin(currentFrame) * 3.0f, 1.0f, cos(currentFrame) * 3.0f);
@@ -131,9 +142,10 @@ int main()
 
         myShader.setMat4("projection", projection);
         myShader.setMat4("view", view);
-
+/*
+        //Model 1
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(-1.5f, -1.0f, 0.0f));
         model = glm::rotate(model, glm::radians(rotationAngle), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 
@@ -141,6 +153,36 @@ int main()
 
         // draw calls heree
         myModel.Draw(myShader);
+*/
+        //Moddel 2
+        glm::mat4 model2 = glm::mat4(1.0f);
+        model2 = glm::translate(model2, glm::vec3(4.0f,-1.0f,0.0f));
+        model2 = glm::rotate(model2, glm::radians(rotationAngle), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.0f));
+
+        myShader.setMat4("model", model2);
+
+        otherModel.Draw(myShader);
+
+        //Model 3
+        glm::mat4 model3 = glm::mat4(1.0f);
+        model3 = glm::translate(model3, glm::vec3(0.0f, -1.0f, 0.0f));
+        model3 = glm::rotate(model3, glm::radians(rotationAngle), glm::vec3(0.0f, 1.0f, 0.0f));
+        model3 = glm::scale(model3, glm::vec3(0.01f));
+        myShader.setMat4("model", model3);
+
+        anotherModel.Draw(myShader);
+
+        //Model 4
+        glm::mat4 model4 = glm::mat4(1.0f);
+        model4 = glm::translate(model4, glm::vec3(7.0f,-1.0f, 0.0f));
+        model4 = glm::rotate(model4, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model4 = glm::rotate(model4, glm::radians(rotationAngle), glm::vec3(1.0f, 0.0f, 0.0f));
+        model4 = glm::scale(model4, glm::vec3(2.0f));
+        myShader.setMat4("model", model4);
+
+        manModel.Draw(myShader);
+    
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -172,6 +214,11 @@ void processInput(GLFWwindow *window)
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+        camera.ProcessKeyboard(UP,deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+        camera.ProcessKeyboard(DOWN,deltaTime);
+    
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
