@@ -1,0 +1,74 @@
+# ===============================
+# macOS system junk
+# ===============================
+.DS_Store
+**/.DS_Store
+
+# ===============================
+# CMake build artifacts
+# ===============================
+build/
+**/build/
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# ===============================
+# Compiled binaries
+# ===============================
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.so
+*.dylib
+
+# ===============================
+# OpenGL / project executables
+# ===============================
+Assignment1/build/
+Assignment2/build/
+Assignment3/build/
+
+# ===============================
+# Runtime config files
+# ===============================
+imgui.ini
+
+# ===============================
+# Editor folders
+# ===============================
+.vscode/
+.idea/
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# Recordings / generated files
+# ===============================
+Recordings/
+*.mp4
+*.avi
+*.mov
+
+# ===============================
+# Temporary folders
+# ===============================
+new ass1/
+Project/
+
+# ===============================
+# Python environments (if used)
+# ===============================
+env/
+venv/
+.venv/
+__pycache__/
+*.pyc
